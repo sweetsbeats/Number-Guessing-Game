@@ -3,9 +3,9 @@
 
 int main() {
 
-  bool playing = true;
+  bool playing = true; // Bool for the game loop
 
-  while (playing == true) {
+  while (playing == true) {  //Main game loop
     int menuInput;
 
     std::cout << "Enter 1 to play, 0 to exit\n";
@@ -24,19 +24,22 @@ int main() {
 
       std::cout << "I'm thinking of a number between 1 and "<< add(answer, favouriteNumber) << ", GUESS\n";
       std::cin >> guessNumber;
-
-              //where the right answer wouldn't get taken
-        while (!gotanswer) {
-        std::cout << "Try again!\n";
-        std::cin >> guessNumber;
-        if (guessNumber == answer) {
-          std::cout << "You win!\n";
-          break;
+     
+      if (guessNumber == answer) {            //This extra check fixes a bug where the right
+        std::cout << "You win!\n";            //answer wouldn't get taken the first time
+      } else if (guessNumber != answer) {
+          while (!gotanswer) {
+            std::cout << "Try again!\n";
+            std::cin >> guessNumber;            
+          if (guessNumber == answer) {
+            std::cout << "You win!\n";
+            break;
         } else {
-          continue;
+            continue;
         }
-       
+       }
       }
+
 
 
     } else if (menuInput == 0) {

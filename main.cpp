@@ -29,6 +29,16 @@ int main() {
         std::cout << "You win!\n";            //answer wouldn't get taken the first time
       } else if (guessNumber != answer) {
           while (!gotanswer) {
+            
+            if (guessNumber > answer)
+            {
+              std::cout << "think smaller, ";
+            }
+            else 
+            {
+              std::cout << "think bigger, ";
+            }
+            
             std::cout << "Try again!\n";
             std::cin >> guessNumber;            
           if (guessNumber == answer) {
@@ -53,3 +63,4 @@ int main() {
 
   return 0;
 }
+

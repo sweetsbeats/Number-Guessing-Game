@@ -1,8 +1,9 @@
 #include <iostream>
 
 //math.h forward delcarations
-int add(int x, int y);
-int square(int x);
+float add(float x, float y);
+float square(float x);
+float absValue(float x);
 
 
 int main() {
@@ -16,17 +17,18 @@ int main() {
     std::cin >> menuInput;
 
     if (menuInput == 1) {
-      int answer;
-      int guessNumber;
+      float answer;
+      float guessNumber;
       bool gotanswer = false;
 
       std::cout << "To start, what is your favourite number?\n";
-      int favouriteNumber;
+      float favouriteNumber;
       std::cin >> favouriteNumber;
+      
 
       answer = square(favouriteNumber);
 
-      std::cout << "I'm thinking of a number between 1 and "<< add(answer, favouriteNumber) << ", GUESS\n";
+      std::cout << "I'm thinking of a number between 1 and "<< add(answer, absValue(favouriteNumber) * 2) << ", GUESS\n";
       std::cin >> guessNumber;
      
       if (guessNumber == answer) {            //This extra check fixes a bug where the right
@@ -50,8 +52,7 @@ int main() {
             break;
         } else {
             continue;
-        }
-       }
+        }  
       }
 
 
@@ -70,10 +71,19 @@ int main() {
 
 //math.cpp delcarations
 
-int add(int x, int y) {
+float add(float x, float y) {
 return x + y;
 }
 
-int square(int x) {
+float square(float x) {
 return x * x;
+}
+
+float absValue(float x) {
+  if (x < .01) {
+    return x * -1;
+  }
+  else {
+    return x;
+  }
 }

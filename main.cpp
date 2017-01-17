@@ -1,5 +1,9 @@
 #include <iostream>
-#include "math.h"
+
+//math.h forward delcarations
+int add(int x, int y);
+int square(int x);
+
 
 int main() {
 
@@ -29,6 +33,16 @@ int main() {
         std::cout << "You win!\n";            //answer wouldn't get taken the first time
       } else if (guessNumber != answer) {
           while (!gotanswer) {
+            
+            if (guessNumber > answer)
+            {
+              std::cout << "think smaller, ";
+            }
+            else 
+            {
+              std::cout << "think bigger, ";
+            }
+            
             std::cout << "Try again!\n";
             std::cin >> guessNumber;            
           if (guessNumber == answer) {
@@ -52,4 +66,14 @@ int main() {
   }
 
   return 0;
+}
+
+//math.cpp delcarations
+
+int add(int x, int y) {
+return x + y;
+}
+
+int square(int x) {
+return x * x;
 }
